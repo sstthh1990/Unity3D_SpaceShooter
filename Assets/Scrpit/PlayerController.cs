@@ -1,9 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class Boundary{
+	// comment from other branch
 	public int xMin, xMax, zMin, zMax;
 }
 
