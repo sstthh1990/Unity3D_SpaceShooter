@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
 public class Boundary{
 	// comment from other branch
@@ -12,8 +13,14 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 
 	public Boundary boundary;
+	public Transform shotSpwan;
+	public GameObject shot;
+	public float fire_rate = 0.5f;
+
 
 	private Rigidbody rb;
+	private float last_fire_time = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
@@ -21,7 +28,11 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetButton ("Fire1") && Time.time - last_fire_time > fire_rate) 
+		{
+			Instantiate(shot, shotSpwan.position, shotSpwan.rotation);
+			last_fire_time = Time.time;
+		}
 	}
 
 	void FixedUpdate()
